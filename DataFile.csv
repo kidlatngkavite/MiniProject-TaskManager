@@ -4,8 +4,8 @@ No.,TaskName,Description,Category,Status
 3,1,2,Work,Completed
 4,a,b,Work,Completed
 5,w,x,Study,In Progress
-6,a,a,Personal,Completed
-7,q,q,Study,In Progress
+6,sprint,a,Work,Completed
+7,jog,q,Study,In Progress
 8,z,z,Personal,Completed
 9,y,y,Personal,In Progress
 10,p,p,Study,In Progress

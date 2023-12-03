@@ -18,7 +18,7 @@ class dataFile:
         return tasklist
 
     # accepts tasklist as arguement then formats it to display on screen
-    def displayFile(self, tasklist):
+    def displayFile(self, tasklist, showStatistics):
         iteration = 0
         numberOfCompleteTasks = 0
         numberWork = 0
@@ -34,7 +34,7 @@ class dataFile:
                 f"{row[0]:>3} {row[1]:<20} {row[2]:<50} {row[3]:<20} {row[4]:<15}", end="\n")
             if iteration == 0:
                 print(f"_"*3, "_"*20, "_"*50, "_"*20, "_"*15, end="\n")
-            if row[4].lower() == "completed":
+            if row[4] == "Completed":
                 numberOfCompleteTasks += 1
             if row[3] == "Work":
                 numberWork += 1
@@ -49,14 +49,15 @@ class dataFile:
         percentageWork = (numberWork/totalNumberofTasks)*100
         percentagePersonal = (numberPersonal/totalNumberofTasks)*100
         percentageStudy = (numberStudy/totalNumberofTasks)*100
-        print("Statistics:")
-        print(
-            f"Tasks: {totalNumberofTasks}, " 
-            f"Completed: {numberOfCompleteTasks}, ({percentageCompletedTasks:.2f}%)")
-        print(
-            f"Work: {numberWork} ({percentageWork:.2f}%), "
-            f"Study: {numberStudy} ({percentageStudy:.2f}%), "
-            f"Personal: {numberPersonal} ({percentagePersonal:.2f}%)")
+        if showStatistics :
+            print("Statistics:")
+            print(
+                f"Tasks: {totalNumberofTasks}, " 
+                f"Completed: {numberOfCompleteTasks}, ({percentageCompletedTasks:.2f}%)")
+            print(
+                f"Work: {numberWork} ({percentageWork:.2f}%), "
+                f"Study: {numberStudy} ({percentageStudy:.2f}%), "
+                f"Personal: {numberPersonal} ({percentagePersonal:.2f}%)")
 
     # writes contents to the file.
     # to add new line. open the file as append
@@ -214,13 +215,14 @@ def modifyTask(csvfileparam, markComplete, rowNumber):
 
 # Main function
 csvfile = dataFile("DataFile.csv")
+showStats = False
 while True:
     system("cls")
     errorNumber = -1
     tasklist = csvfile.readFile()
-    csvfile.displayFile(tasklist)
+    csvfile.displayFile(tasklist, showStats)
     choice = input(
-        f"Press (a) to add, (m) to modify, (d) to delete, (c) to mark completed (x) to exit: ")
+        f"Press (a) to add, (m) to modify, (d) to delete, (c) to mark completed, (s) Toggle Statistics (x) to exit: ")
     if choice.lower() == "a":
         addTask(csvfile)
     elif choice.lower() == "m":
@@ -244,6 +246,9 @@ while True:
         errorNumber = deleteTask(csvfile, rowchoice)
         if errorNumber == -1:
             print(f"Invalid Row Number")
+    elif choice.lower() == "s":
+        showStats = not(showStats)
+        continue
     elif choice.lower() == "x":
         print(f"Exiting...")
         break

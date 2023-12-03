@@ -1,24 +1,42 @@
 <snippet>
   <content><![CDATA[
-${1:Task Manager}
-TODO: Write a project description
+
+## Project: Task Manager
+
+## Description
+This program is for organizing tasks. This allows you to create and keep track of tasks. Track complete and in progress. Displays statics of competed tasks and categories. 
 
 ## Installation
-TODO: Describe the installation process
+Clone the repository or copy the python file. No additional installtion instructions. 
+
+
 ## Usage
-TODO: Write usage instructions
+Press (a) to add
+Press (m) to modify
+Press (d) to delete
+Press (c) to mark completed 
+Press (x) to exit the program
+
+
+
 ## Contributing
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
+
 ## History
-TODO: Write history
+12/4/2023 - first commit for review
+
 ## Credits
-TODO: Write credits
+
+Issue Creator: Mark Loma
+Code Reviewers: Mark Loma and ArgalX
+Shout out to my instructor and all my classmates
+
 ## License
-TODO: Write license
+GPL License
 ]]></content>
   <tabTrigger>readme</tabTrigger>
 </snippet>
